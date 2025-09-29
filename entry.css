@@ -1,52 +1,469 @@
-body,
-html {
+* {
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
-  height: 100%;
+  box-sizing: border-box;
 }
 
+body,
+html {
+  height: 100%;
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+  background: #000;
+}
+
+/* Animated Space Background */
+.stars,
+.twinkling,
+.clouds {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.stars {
+  background: #000 url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="0.5" fill="white" opacity="0.8"/><circle cx="80" cy="40" r="0.3" fill="white" opacity="0.6"/><circle cx="40" cy="60" r="0.4" fill="white" opacity="0.7"/><circle cx="90" cy="80" r="0.2" fill="white" opacity="0.5"/><circle cx="10" cy="90" r="0.6" fill="white" opacity="0.9"/><circle cx="70" cy="10" r="0.3" fill="white" opacity="0.6"/><circle cx="30" cy="30" r="0.4" fill="white" opacity="0.7"/><circle cx="60" cy="70" r="0.2" fill="white" opacity="0.5"/></svg>') repeat;
+  background-size: 200px 200px;
+  animation: move-stars 50s linear infinite;
+}
+
+.twinkling {
+  background: transparent url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="25" cy="25" r="0.3" fill="white" opacity="0.4"/><circle cx="75" cy="45" r="0.2" fill="white" opacity="0.6"/><circle cx="45" cy="65" r="0.4" fill="white" opacity="0.3"/><circle cx="85" cy="85" r="0.3" fill="white" opacity="0.5"/><circle cx="15" cy="85" r="0.2" fill="white" opacity="0.4"/></svg>') repeat;
+  background-size: 300px 300px;
+  animation: move-twinkle 100s linear infinite;
+}
+
+.clouds {
+  background: transparent url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><radialGradient id="nebula" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:%23ff6b9d;stop-opacity:0.1"/><stop offset="50%" style="stop-color:%236c5ce7;stop-opacity:0.05"/><stop offset="100%" style="stop-color:%23000;stop-opacity:0"/></radialGradient></defs><circle cx="30" cy="40" r="20" fill="url(%23nebula)"/><circle cx="70" cy="60" r="15" fill="url(%23nebula)"/></svg>') repeat;
+  background-size: 400px 400px;
+  animation: move-clouds 200s linear infinite;
+}
+
+@keyframes move-stars {
+  from { transform: translateY(0px); }
+  to { transform: translateY(-2000px); }
+}
+
+@keyframes move-twinkle {
+  from { transform: translateY(0px); }
+  to { transform: translateY(-3000px); }
+}
+
+@keyframes move-clouds {
+  from { transform: translateY(0px); }
+  to { transform: translateY(-4000px); }
+}
+
+/* Main Entry Page */
 .entry-page {
+  position: relative;
+  height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  height: 100%;
-  background-image: url(entry2.gif), url("layer2purplestar.gif"),
-    url("/Users/ubahhassan/Desktop/Space WEB/shootingstars50slowerexport.gif"),
-    url("final nebula.png"), url("layer 3 green star.gif"),
-    url("shootingstars.gif"), url("yellowstars.gif"),
-    url("Assets/bgpixelgif.gif");
-  background-repeat: no-repeat, repeat, repeat, no-repeat, repeat, repeat,
-    repeat, repeat;
-  background-position: center center;
-  background-size: 110%, auto, auto, 50%;
-  background-attachment: fixed;
-}
-button {
-  padding: 5px 10px;
-  font-size: 14px;
-  background-color: #bdbdbd;
-  box-shadow: 0.5px 0.5px 0 0.5px black, inset 1px 1px #c2c6ca,
-    inset -1px -1px #85898d, inset 2px 2px white;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  margin-bottom: 80px;
-  cursor: url("astroglove.png"), auto;
-}
-
-button:hover {
-  background-color: #a0a0a0;
-}
-.next-page {
-  display: none;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+  background: radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 35%, #0f0f23 100%);
+  overflow: hidden;
+}
+
+.content-container {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  max-width: 800px;
+  padding: 2rem;
+}
+
+/* Logo Animation */
+.logo-container {
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.cosmic-logo {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+}
+
+.planet-core {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(45deg, #ff6b9d, #c44569, #f8b500);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 
+    0 0 30px rgba(255, 107, 157, 0.6),
+    inset -10px -10px 20px rgba(0, 0, 0, 0.3);
+  animation: planet-rotate 20s linear infinite;
+}
+
+.planet-ring {
+  width: 120px;
+  height: 120px;
+  border: 3px solid transparent;
+  border-top: 3px solid rgba(108, 92, 231, 0.8);
+  border-right: 3px solid rgba(108, 92, 231, 0.4);
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: ring-rotate 10s linear infinite;
+}
+
+@keyframes planet-rotate {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes ring-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Typography */
+.main-title {
+  font-family: 'Orbitron', monospace;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 900;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+
+.cosmic {
+  background: linear-gradient(45deg, #ff6b9d, #c44569);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: block;
+  animation: glow-pulse 3s ease-in-out infinite alternate;
+}
+
+.voyage {
+  background: linear-gradient(45deg, #6c5ce7, #a29bfe);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: block;
+  animation: glow-pulse 3s ease-in-out infinite alternate 1.5s;
+}
+
+@keyframes glow-pulse {
+  from { 
+    filter: drop-shadow(0 0 10px rgba(255, 107, 157, 0.5));
+    transform: scale(1);
+  }
+  to { 
+    filter: drop-shadow(0 0 20px rgba(255, 107, 157, 0.8));
+    transform: scale(1.02);
+  }
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 3rem;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+/* Features Grid */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.feature-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(108, 92, 231, 0.2);
+}
+
+.feature-icon {
+  font-size: 1.5rem;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+}
+
+.feature-item span {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+/* CTA Container */
+.cta-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Modern Enter Button */
+.enter-button {
+  position: relative;
+  padding: 1.25rem 3rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  color: white;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 
+    0 10px 30px rgba(102, 126, 234, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.enter-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    0 15px 40px rgba(102, 126, 234, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.enter-button:active {
+  transform: translateY(-1px);
+}
+
+.button-text {
+  position: relative;
+  z-index: 2;
+}
+
+.button-glow {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
   height: 100%;
-  background-color: #f0f0f0;
-  opacity: 0;
-  transition: opacity 0.5s;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.enter-button:hover .button-glow {
+  left: 100%;
+}
+
+.rocket-trail {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ff6b9d);
+  transform: translateY(-50%);
+  transition: width 0.3s ease;
+}
+
+.enter-button:hover .rocket-trail {
+  width: 20px;
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.7;
+}
+
+.scroll-text {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 300;
+}
+
+.scroll-arrow {
+  width: 20px;
+  height: 20px;
+  border-right: 2px solid rgba(255, 255, 255, 0.6);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.6);
+  transform: rotate(45deg);
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: rotate(45deg) translateY(0); }
+  40% { transform: rotate(45deg) translateY(-10px); }
+  60% { transform: rotate(45deg) translateY(-5px); }
+}
+
+/* Floating Elements */
+.floating-elements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.floating-planet {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+.planet-1 {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(45deg, #ff9a9e, #fecfef);
+  top: 20%;
+  left: 10%;
+  animation: float 6s ease-in-out infinite;
+}
+
+.planet-2 {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(45deg, #a8edea, #fed6e3);
+  top: 60%;
+  right: 15%;
+  animation: float 8s ease-in-out infinite reverse;
+}
+
+.planet-3 {
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(45deg, #d299c2, #fef9d7);
+  bottom: 20%;
+  left: 20%;
+  animation: float 10s ease-in-out infinite;
+}
+
+.asteroid {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+}
+
+.asteroid-1 {
+  top: 30%;
+  right: 25%;
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+.asteroid-2 {
+  bottom: 40%;
+  left: 30%;
+  animation: twinkle 4s ease-in-out infinite 1s;
+}
+
+.asteroid-3 {
+  top: 70%;
+  right: 40%;
+  animation: twinkle 5s ease-in-out infinite 2s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(180deg); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.5); }
+}
+
+/* Space Particles */
+.space-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.3), transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(255, 107, 157, 0.4), transparent),
+    radial-gradient(1px 1px at 90px 40px, rgba(108, 92, 231, 0.5), transparent),
+    radial-gradient(1px 1px at 130px 80px, rgba(255, 255, 255, 0.2), transparent),
+    radial-gradient(2px 2px at 160px 30px, rgba(255, 107, 157, 0.3), transparent);
+  background-repeat: repeat;
+  background-size: 200px 100px;
+  animation: sparkle 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes sparkle {
+  from { transform: translateY(0px); }
+  to { transform: translateY(-100px); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .content-container {
+    padding: 1rem;
+  }
+  
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .feature-item {
+    padding: 0.75rem;
+  }
+  
+  .enter-button {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+  
+  .cosmic-logo {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .planet-core {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .planet-ring {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .subtitle {
+    font-size: 1rem;
+  }
+  
+  .floating-planet,
+  .asteroid {
+    display: none;
+  }
 }

@@ -3,18 +3,78 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Entry Page</title>
+    <title>Cosmic Voyage - Journey Through Space</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="entry.css" />
   </head>
   <body>
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+    <div class="clouds"></div>
+    
     <div class="entry-page">
-      <a href="main.html"> <button id="button">Enter</button> </a>
+      <div class="content-container">
+        <div class="hero-content">
+          <div class="logo-container">
+            <div class="cosmic-logo">
+              <div class="planet-ring"></div>
+              <div class="planet-core"></div>
+            </div>
+          </div>
+          
+          <h1 class="main-title">
+            <span class="cosmic">COSMIC</span>
+            <span class="voyage">VOYAGE</span>
+          </h1>
+          
+          <p class="subtitle">
+            Embark on an extraordinary journey through our solar system
+          </p>
+          
+          <div class="features-grid">
+            <div class="feature-item">
+              <div class="feature-icon">🌟</div>
+              <span>Explore 8 Planets</span>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">🚀</div>
+              <span>Interactive Experience</span>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">🌌</div>
+              <span>Rich Animations</span>
+            </div>
+          </div>
+          
+          <div class="cta-container">
+            <button class="enter-button" id="enterButton">
+              <span class="button-text">Begin Journey</span>
+              <div class="button-glow"></div>
+              <div class="rocket-trail"></div>
+            </button>
+            
+            <div class="scroll-indicator">
+              <div class="scroll-text">Scroll to explore</div>
+              <div class="scroll-arrow"></div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="floating-elements">
+          <div class="floating-planet planet-1"></div>
+          <div class="floating-planet planet-2"></div>
+          <div class="floating-planet planet-3"></div>
+          <div class="asteroid asteroid-1"></div>
+          <div class="asteroid asteroid-2"></div>
+          <div class="asteroid asteroid-3"></div>
+        </div>
+      </div>
+      
+      <div class="space-particles"></div>
     </div>
 
-    <div class="next-page">
-      <h1>Welcome to the Next Page</h1>
-      <p>This is the content of the next page.</p>
-    </div>
+    <script src="script.js"></script>
   </body>
-  <script src="script.js"></script>
 </html>
